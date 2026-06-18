@@ -11,14 +11,11 @@ import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
 const DEFAULT_OG_IMAGE = "default-og.jpg";
 
 const config: ResolvedAstroPaperConfig = {
-  site: {
-    ...userConfig.site,
-    ogImage: userConfig.site.ogImage ?? DEFAULT_OG_IMAGE,
-    lang: userConfig.site.lang ?? "en",
-    timezone: userConfig.site.timezone ?? "UTC",
-    dir: userConfig.site.dir ?? "ltr",
-    googleVerification:
-      userConfig.site.googleVerification || PUBLIC_GOOGLE_SITE_VERIFICATION,
+  site: "https://primus027.github.io" ,
+  author: "Farhan Sadique",
+
+  profile:{
+    name: "Farhan Sadique"
   },
   posts: {
     perPage: userConfig.posts?.perPage ?? 4,

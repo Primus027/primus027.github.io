@@ -38,28 +38,21 @@
 // };
 
 // export default config;
-const config = {
-  site: "https://primus027.github.io", // Fixed: plain string URL
+export const SITE = {
+  website: "https://primus027.github.io/",
   author: "Farhan Sadique",
+  profile: "",
+  desc: "A simple personal blog.",
+  title: "Farhan's Blog",
   ogImage: "default-og.jpg",
-  profile: {
-    name: "Farhan Sadique",
-  },
-  posts: {
-    perPage: 4,
-    perIndex: 4,
-    scheduledPostMargin: 900000,
-  },
-  features: {
-    lightAndDarkMode: true,
-    dynamicOgImage: false,
-    showArchives: true,
-    showBackButton: true,
-    editPost: { enabled: false },
-    search: "pagefind",
-  },
-  socials: [],
-  shareLinks: [],
+  lightAndDarkMode: true,
+  postPerPage: 4,
+  scheduledPostMargin: 900000,
 };
 
-export default config;
+export const LOCALE = {
+  lang: "en",
+  langTag: ["en-EN"],
+};
+
+export const SOCIALS = [];

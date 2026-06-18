@@ -38,22 +38,30 @@
 // };
 
 // export default config;
-import { defineCollection, z } from 'astro:content';
+const config = {
+  site: {
+    url: "https://primus027.github.io",
+  },
+  author: "Farhan Sadique",
+  ogImage: "default-og.jpg",
+  profile: {
+    name: "Farhan Sadique",
+  },
+  posts: {
+    perPage: 4,
+    perIndex: 4,
+    scheduledPostMargin: 900000,
+  },
+  features: {
+    lightAndDarkMode: true,
+    dynamicOgImage: false,
+    showArchives: true,
+    showBackButton: true,
+    editPost: { enabled: false },
+    search: "pagefind",
+  },
+  socials: [],
+  shareLinks: [],
+};
 
-const blog = defineCollection({
-	type: 'content',
-	// Type-check frontmatter using zod
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		// Transform string to Date object
-		pubDate: z.coerce.date(),
-		updatedDate: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
-	}),
-});
-
-export const collections = { blog };
-
-export const SITE_TITLE = 'My Personal Blog';
-export const SITE_DESCRIPTION = 'Welcome to my new blog!';
+export default config;

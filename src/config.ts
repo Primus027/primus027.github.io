@@ -1,40 +1,59 @@
-/**
- * Internal resolved configuration used throughout the codebase.
- *
- * Prefer editing `astro-paper.config.ts` instead of this file. This module exists to
- * apply defaults and expose a fully-resolved config shape (`ResolvedAstroPaperConfig`).
- */
-import userConfig from "@/astro-paper.config";
-import type { ResolvedAstroPaperConfig } from "./types/config";
-import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
+// /**
+//  * Internal resolved configuration used throughout the codebase.
+//  *
+//  * Prefer editing `astro-paper.config.ts` instead of this file. This module exists to
+//  * apply defaults and expose a fully-resolved config shape (`ResolvedAstroPaperConfig`).
+//  */
+// import userConfig from "@/astro-paper.config";
+// import type { ResolvedAstroPaperConfig } from "./types/config";
+// import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
 
-const DEFAULT_OG_IMAGE = "default-og.jpg";
+// const DEFAULT_OG_IMAGE = "default-og.jpg";
 
-const config: ResolvedAstroPaperConfig = {
-  site: {
-    url: "https://primus027.github.io",
-  },
-  author: "Farhan Sadique",
-  ogImage: DEFAULT_OG_IMAGE,
-  profile:{
-    name: "Farhan Sadique"
-  },
-  posts: {
-    perPage: userConfig.posts?.perPage ?? 4,
-    perIndex: userConfig.posts?.perIndex ?? 4,
-    scheduledPostMargin:
-      userConfig.posts?.scheduledPostMargin ?? 15 * 60 * 1000,
-  },
-  features: {
-    lightAndDarkMode: userConfig.features?.lightAndDarkMode ?? true,
-    dynamicOgImage: userConfig.features?.dynamicOgImage ?? true,
-    showArchives: userConfig.features?.showArchives ?? true,
-    showBackButton: userConfig.features?.showBackButton ?? true,
-    editPost: userConfig.features?.editPost ?? { enabled: false },
-    search: userConfig.features?.search ?? "pagefind",
-  },
-  socials: userConfig.socials ?? [],
-  shareLinks: userConfig.shareLinks ?? [],
-};
+// const config: ResolvedAstroPaperConfig = {
+//   site: {
+//     url: "https://primus027.github.io",
+//   },
+//   author: "Farhan Sadique",
+//   ogImage: DEFAULT_OG_IMAGE,
+//   profile:{
+//     name: "Farhan Sadique"
+//   },
+//   posts: {
+//     perPage: userConfig.posts?.perPage ?? 4,
+//     perIndex: userConfig.posts?.perIndex ?? 4,
+//     scheduledPostMargin:
+//       userConfig.posts?.scheduledPostMargin ?? 15 * 60 * 1000,
+//   },
+//   features: {
+//     lightAndDarkMode: userConfig.features?.lightAndDarkMode ?? true,
+//     dynamicOgImage: userConfig.features?.dynamicOgImage ?? true,
+//     showArchives: userConfig.features?.showArchives ?? true,
+//     showBackButton: userConfig.features?.showBackButton ?? true,
+//     editPost: userConfig.features?.editPost ?? { enabled: false },
+//     search: userConfig.features?.search ?? "pagefind",
+//   },
+//   socials: userConfig.socials ?? [],
+//   shareLinks: userConfig.shareLinks ?? [],
+// };
 
-export default config;
+// export default config;
+import { defineCollection, z } from 'astro:content';
+
+const blog = defineCollection({
+	type: 'content',
+	// Type-check frontmatter using zod
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		// Transform string to Date object
+		pubDate: z.coerce.date(),
+		updatedDate: z.coerce.date().optional(),
+		heroImage: z.string().optional(),
+	}),
+});
+
+export const collections = { blog };
+
+export const SITE_TITLE = 'My Personal Blog';
+export const SITE_DESCRIPTION = 'Welcome to my new blog!';

@@ -39,9 +39,7 @@
 
 // export default config;
 const config = {
-  site: {
-    url: "https://primus027.github.io",
-  },
+  site: "https://primus027.github.io", // Fixed: plain string URL
   author: "Farhan Sadique",
   ogImage: "default-og.jpg",
   profile: {

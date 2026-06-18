@@ -11,9 +11,11 @@ import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
 const DEFAULT_OG_IMAGE = "default-og.jpg";
 
 const config: ResolvedAstroPaperConfig = {
-  site: "https://primus027.github.io" ,
+  site: {
+    url: "https://primus027.github.io",
+  },
   author: "Farhan Sadique",
-
+  ogImage: DEFAULT_OG_IMAGE,
   profile:{
     name: "Farhan Sadique"
   },

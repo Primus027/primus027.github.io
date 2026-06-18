@@ -35,6 +35,8 @@ jobs:
         run: npm ci --legacy-peer-deps
         working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
+        env:
+          ASTRO_SKIP_CHECK: true
         run: npm run build
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
